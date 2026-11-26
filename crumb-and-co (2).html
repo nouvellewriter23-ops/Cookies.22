@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRUMB &amp; CO. | كوكيز فاخر مخبوز يومياً</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { cream:'#F8F5F0', linen:'#EFECE6', espresso:'#2C1E16', cocoa:'#4A3525', caramel:'#8C5A3C', sand:'#D5C4B3', gold:'#C9A36A' },
+    fontFamily: { ar:['Cairo','sans-serif'], serif:['"Playfair Display"','serif'], num:['"Plus Jakarta Sans"','sans-serif'] }
+  } }
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',sans-serif}
+  .scrim{background:linear-gradient(135deg,#D5C4B3,#8C5A3C)}
+  .drawer{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .pop{animation:pop .35s}
+  @keyframes pop{50%{transform:scale(1.35)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="bg-cream text-cocoa antialiased">
+
+<!-- Header -->
+<header class="sticky top-0 z-30 bg-cream/90 backdrop-blur border-b border-sand/50">
+  <div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between gap-4">
+    <a href="#home" class="leading-none">
+      <span class="block font-serif text-2xl font-bold tracking-wide text-espresso" dir="ltr">CRUMB &amp; CO.</span>
+      <span class="block font-serif italic text-[11px] text-caramel mt-1" dir="ltr">Artisanal Cookies · Est. 2026</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 font-semibold">
+      <a class="hover:text-caramel transition" href="#home">الرئيسية</a>
+      <a class="hover:text-caramel transition" href="#menu">القائمة</a>
+      <a class="hover:text-caramel transition" href="#boxes">بوكسات الهدايا</a>
+      <a class="hover:text-caramel transition" href="#story">قصتنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="cartBtn" aria-label="فتح السلة" class="relative w-12 h-12 rounded-full bg-espresso text-cream grid place-items-center hover:bg-caramel transition">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span id="count" class="font-num absolute -top-1 -left-1 min-w-[22px] h-[22px] px-1 rounded-full bg-gold text-espresso text-xs font-bold grid place-items-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="القائمة" class="md:hidden w-12 h-12 rounded-full border border-sand grid place-items-center">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileNav" class="hidden md:hidden px-5 pb-4 font-semibold border-t border-sand/50 bg-cream">
+    <a class="block py-3 border-b border-sand/40" href="#home">الرئيسية</a>
+    <a class="block py-3 border-b border-sand/40" href="#menu">القائمة</a>
+    <a class="block py-3 border-b border-sand/40" href="#boxes">بوكسات الهدايا</a>
+    <a class="block py-3" href="#story">قصتنا</a>
+  </nav>
+</header>
+
+<main>
+<!-- Hero -->
+<section id="home" class="max-w-6xl mx-auto px-5 pt-10 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+  <div>
+    <p class="font-serif italic text-caramel text-lg mb-4" dir="ltr">Freshly Baked Daily</p>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-espresso leading-[1.35]">كوكيز يذوب في الفم، ودفء يبقى في القلب</h1>
+    <p class="mt-6 text-lg text-cocoa/80 max-w-lg leading-9">نعجن بالزبدة الفاخرة ونخبز على دفعات صغيرة، ثم نضيف شوكولاتة داكنة تنساب مع أول قضمة. يصلك طازجاً كأنه خرج للتو من الفرن.</p>
+    <div class="mt-9 flex flex-wrap items-center gap-4">
+      <a href="#menu" class="bg-espresso text-cream px-9 py-4 rounded-full font-bold hover:bg-caramel hover:-translate-y-0.5 transition">اكتشف القائمة</a>
+      <a href="#boxes" class="px-9 py-4 rounded-full font-bold border-2 border-espresso hover:bg-espresso hover:text-cream transition">بوكسات الهدايا</a>
+    </div>
+    <div class="mt-10 flex gap-8 font-num text-sm text-cocoa/70" dir="ltr">
+      <div><b class="block text-2xl text-espresso">2,000+</b>Happy Orders</div>
+      <div><b class="block text-2xl text-espresso">100%</b>Real Butter</div>
+      <div><b class="block text-2xl text-espresso">6</b>Signature Flavors</div>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="aspect-[4/5] sm:aspect-square rounded-[2.5rem] overflow-hidden scrim shadow-2xl shadow-espresso/30">
+      <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=1200&q=80"
+           data-fb="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1200&q=80,https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=80"
+           alt="كوكيز برقائق الشوكولاتة طازج" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute -bottom-5 right-4 sm:-right-6 bg-cream rounded-2xl px-5 py-4 shadow-xl border border-sand/60">
+      <p class="font-serif italic text-caramel text-sm" dir="ltr">Out of the oven</p>
+      <p class="font-bold text-espresso">يُخبز كل صباح</p>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="bg-linen py-20 scroll-mt-20">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14">
+      <p class="font-serif italic text-caramel" dir="ltr">The Menu</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-espresso mt-2">قائمة الكوكيز</h2>
+      <p class="mt-3 text-cocoa/70">ست نكهات بوصفات خاصة. السعر لكل قطعة.</p>
+    </div>
+    <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+  </div>
+</section>
+
+<!-- Signature boxes -->
+<section id="boxes" class="max-w-6xl mx-auto px-5 py-20 scroll-mt-20">
+  <div class="text-center mb-14">
+    <p class="font-serif italic text-caramel" dir="ltr">Signature Boxes</p>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-espresso mt-2">بوكسات التذوق</h2>
+    <p class="mt-3 text-cocoa/70">مزيج من نكهاتنا في علبة أنيقة، مناسب للهدايا والمناسبات.</p>
+  </div>
+  <div id="boxGrid" class="grid md:grid-cols-2 gap-8"></div>
+</section>
+
+<!-- Story -->
+<section id="story" class="bg-espresso text-cream py-20 scroll-mt-20">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="aspect-[4/3] rounded-3xl overflow-hidden scrim">
+      <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1100&q=80"
+           data-fb="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1100&q=80,https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=1100&q=80"
+           alt="كوكيز مع كوب قهوة" class="w-full h-full object-cover" loading="lazy">
+    </div>
+    <div>
+      <p class="font-serif italic text-gold" dir="ltr">Our Story</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 leading-snug">بدأت من صينية واحدة في مطبخ صغير</h2>
+      <p class="mt-5 text-sand leading-9">كنا نخبز لأصدقائنا في عطلة نهاية الأسبوع، وكانت الصينية تفرغ قبل أن تبرد. من هناك وُلد CRUMB &amp; CO.، وما زلنا نعجن بأيدينا ونخبز على دفعات صغيرة.</p>
+      <p class="mt-4 text-sand leading-9">نختار الزبدة والدقيق والشوكولاتة بعناية، لأن الكوكيز الجيد لا يحتاج أكثر من مكونات جيدة ووقت كافٍ.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-espresso text-sand border-t border-cocoa pt-14 pb-8">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-3 gap-10">
+    <div>
+      <span class="block font-serif text-2xl font-bold text-cream" dir="ltr">CRUMB &amp; CO.</span>
+      <span class="block font-serif italic text-xs text-gold mt-1" dir="ltr">Freshly Baked Daily</span>
+      <p class="mt-4 text-sm leading-8 max-w-xs">كوكيز فاخر مخبوز بحب. اطلب اليوم واستلمه دافئاً.</p>
+    </div>
+    <div>
+      <h4 class="font-bold text-cream mb-3">روابط سريعة</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-cream" href="#home">الرئيسية</a></li>
+        <li><a class="hover:text-cream" href="#menu">القائمة</a></li>
+        <li><a class="hover:text-cream" href="#boxes">بوكسات الهدايا</a></li>
+        <li><a class="hover:text-cream" href="#story">قصتنا</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-cream mb-3">تواصل معنا</h4>
+      <ul class="space-y-2 text-sm font-num" dir="ltr" style="text-align:right">
+        <li>hello@crumbandco.com</li>
+        <li>+213 555 00 00 00</li>
+        <li>@crumbandco</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mt-12 pt-6 border-t border-cocoa text-center text-xs font-num" dir="ltr">© 2026 CRUMB &amp; CO. All rights reserved.</p>
+</footer>
+
+<!-- Cart drawer -->
+<div id="overlay" class="fixed inset-0 z-40 bg-espresso/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<aside id="drawer" aria-hidden="true" class="drawer fixed top-0 bottom-0 left-0 z-50 w-full max-w-md bg-cream flex flex-col -translate-x-full shadow-2xl">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-sand/60">
+    <h3 id="drawerTitle" class="text-xl font-extrabold text-espresso">سلة التسوق</h3>
+    <button id="closeBtn" aria-label="إغلاق" class="w-10 h-10 rounded-full bg-linen hover:bg-sand transition">✕</button>
+  </div>
+
+  <div id="cartView" class="flex-1 flex flex-col min-h-0">
+    <div id="cartItems" class="flex-1 overflow-y-auto px-6"></div>
+    <form id="orderForm" class="px-6 pt-4 pb-6 border-t border-sand/60 bg-linen space-y-3" novalidate>
+      <div class="flex justify-between text-sm"><span>المجموع الفرعي</span><span id="subtotal" class="font-num font-semibold">0</span></div>
+      <div class="flex justify-between text-sm"><span>التوصيل</span><span id="shipping" class="font-num font-semibold">0</span></div>
+      <div class="flex justify-between text-lg font-extrabold text-espresso"><span>الإجمالي</span><span id="total" class="font-num">0</span></div>
+      <input id="fName" type="text" placeholder="الاسم الكامل" class="w-full rounded-xl border border-sand bg-cream px-4 py-3 outline-none focus:border-caramel">
+      <input id="fPhone" type="tel" placeholder="رقم الهاتف" dir="rtl" class="w-full rounded-xl border border-sand bg-cream px-4 py-3 outline-none focus:border-caramel">
+      <input id="fAddress" type="text" placeholder="العنوان / الولاية" class="w-full rounded-xl border border-sand bg-cream px-4 py-3 outline-none focus:border-caramel">
+      <textarea id="fNotes" rows="2" placeholder="ملاحظات إضافية (اختياري)" class="w-full rounded-xl border border-sand bg-cream px-4 py-3 outline-none focus:border-caramel resize-none"></textarea>
+      <p id="formError" class="hidden text-sm text-red-700"></p>
+      <button id="submitBtn" type="submit" class="w-full bg-espresso text-cream py-4 rounded-full font-bold hover:bg-caramel transition disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-3">
+        <svg id="spin" class="hidden w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-opacity=".25"/><path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"/></svg>
+        <span id="submitLabel">تأكيد الطلب</span>
+      </button>
+      <a id="waFallback" href="#" target="_blank" rel="noopener" class="hidden text-center text-sm font-semibold text-caramel underline">أو أرسل الطلب عبر واتساب</a>
+    </form>
+  </div>
+
+  <div id="successView" class="hidden flex-1 flex-col items-center justify-center text-center px-8">
+    <div class="w-20 h-20 rounded-full bg-caramel text-cream grid place-items-center text-4xl mb-6">✓</div>
+    <h3 class="text-2xl font-extrabold text-espresso">تم استلام طلبك</h3>
+    <p id="successMsg" class="mt-3 text-cocoa/80 leading-8 whitespace-pre-line"></p>
+    <p class="mt-2 font-num text-sm text-caramel" id="orderNo" dir="ltr"></p>
+    <button id="doneBtn" class="mt-8 bg-espresso text-cream px-9 py-3 rounded-full font-bold hover:bg-caramel transition">متابعة التسوق</button>
+  </div>
+</aside>
+
+<div id="toast" role="status" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 opacity-0 z-[60] bg-espresso text-cream px-6 py-3 rounded-full text-sm shadow-xl transition-all duration-300"></div>
+
+<script>
+/* ===== الإعدادات: عدّل الأسعار والعملة من هنا ===== */
+const CURRENCY = 'DZD';
+const SHIPPING_FEE = 300;
+const FREE_SHIPPING_FROM = 3000;
+const WA_NUMBER = '213673856125';   // رقم واتساب المتجر بدون + أو أصفار
+const STORE_NAME = 'CRUMB & CO.';
+/* ===== بوت تيليجرام: يرسل الطلب إلى حسابك في الخلفية ===== */
+const TELEGRAM_BOT_TOKEN = "9098830477:AAE7F2ytas-4XTPYTqShPO71ich0EbWrZwY";
+const TELEGRAM_CHAT_ID = "7778886873";
+
+const PRODUCTS = [
+  { id:'classic', ar:'الكلاسيكية بالشوكولاتة', en:'Classic Chocolate Chip', price:450,
+    desc:'زبدة مُحمّرة، سكر بني، ورقائق شوكولاتة داكنة تذوب مع أول قضمة.',
+    img:'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80'] },
+  { id:'double', ar:'دبل شوكولاتة', en:'Double Chocolate', price:500,
+    desc:'عجينة كاكاو غنية محشوّة بقطع شوكولاتة داكنة وبيضاء.',
+    img:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=800&q=80'] },
+  { id:'matcha', ar:'ماتشا والشوكولاتة البيضاء', en:'Matcha White Chocolate', price:550,
+    desc:'ماتشا يابانية فاخرة مع شوكولاتة بيضاء كريمية وحلاوة هادئة.',
+    img:'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80'] },
+  { id:'redvelvet', ar:'ريد فلفت', en:'Red Velvet', price:550,
+    desc:'قوام ناعم بلون أحمر عميق وقلب من جبنة الكريمة.',
+    img:'https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80'] },
+  { id:'caramel', ar:'كراميل وملح البحر', en:'Salted Caramel', price:500,
+    desc:'كراميل منزلي يتسلل إلى قلب الكوكيز، مع رشة ملح بحري على الوجه.',
+    img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80'] },
+  { id:'pistachio', ar:'فستق وشوكولاتة', en:'Pistachio Chocolate', price:600,
+    desc:'فستق حلبي مطحون مع شوكولاتة بيضاء وقطع فستق مقرمشة.',
+    img:'https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=800&q=80',
+    fb:['https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80'] }
+];
+
+const BOXES = [
+  { id:'box6', ar:'بوكس التذوق الصغير', en:'Tasting Box · 6 pcs', price:2800, tag:'6 PIECES',
+    desc:'ست قطع تضم كل نكهات القائمة، في علبة بيج أنيقة مع شريط بني.',
+    img:'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80',
+    fb:['https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80'] },
+  { id:'box12', ar:'بوكس التذوق الكبير', en:'Tasting Box · 12 pcs', price:5200, tag:'12 PIECES',
+    desc:'اثنتا عشرة قطعة، قطعتان من كل نكهة، مع بطاقة إهداء مكتوبة بخط اليد.',
+    img:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80',
+    fb:['https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80'] }
+];
+
+const ALL = [...PRODUCTS, ...BOXES];
+const $ = id => document.getElementById(id);
+const money = n => `${n.toLocaleString('en-US')} ${CURRENCY}`;
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('crumb-cart')) || []; } catch (e) { cart = []; }
+cart = cart.filter(i => ALL.some(p => p.id === i.id));
+const persist = () => { try { localStorage.setItem('crumb-cart', JSON.stringify(cart)); } catch (e) {} };
+
+/* ===== الصور: سلسلة روابط احتياطية ثم تدرج لوني ===== */
+document.addEventListener('error', e => {
+  const img = e.target;
+  if (img.tagName !== 'IMG') return;
+  const list = (img.dataset.fb || '').split(',').filter(Boolean);
+  const next = list.shift();
+  if (next) { img.dataset.fb = list.join(','); img.src = next; }
+  else { img.style.visibility = 'hidden'; }
+}, true);
+
+const imgTag = (p, cls) => `<img src="${p.img}" data-fb="${(p.fb || []).join(',')}" alt="${esc(p.ar)}" loading="lazy" class="${cls}">`;
+
+/* ===== عرض المنتجات والبوكسات ===== */
+$('menuGrid').innerHTML = PRODUCTS.map(p => `
+  <article class="group bg-cream rounded-3xl overflow-hidden border border-sand/60 flex flex-col hover:shadow-xl hover:shadow-espresso/10 hover:-translate-y-1 transition duration-300">
+    <div class="aspect-[4/3] overflow-hidden scrim">${imgTag(p, 'w-full h-full object-cover group-hover:scale-105 transition duration-700')}</div>
+    <div class="p-6 flex flex-col flex-1">
+      <h3 class="text-xl font-extrabold text-espresso">${p.ar}</h3>
+      <p class="font-serif italic text-caramel text-sm mt-0.5" dir="ltr" style="text-align:right">${p.en}</p>
+      <p class="mt-3 text-sm text-cocoa/80 leading-7 flex-1">${p.desc}</p>
+      <div class="mt-5 flex items-center justify-between">
+        <span class="font-num font-bold text-lg text-espresso" dir="ltr">${money(p.price)}</span>
+        <button data-add="${p.id}" class="bg-espresso text-cream px-5 py-2.5 rounded-full text-sm font-bold hover:bg-caramel transition">أضف إلى السلة +</button>
+      </div>
+    </div>
+  </article>`).join('');
+
+$('boxGrid').innerHTML = BOXES.map(b => `
+  <article class="grid sm:grid-cols-5 bg-linen rounded-3xl overflow-hidden border border-sand/60">
+    <div class="sm:col-span-2 min-h-[200px] scrim">${imgTag(b, 'w-full h-full object-cover')}</div>
+    <div class="sm:col-span-3 p-7 flex flex-col">
+      <span class="font-num text-xs tracking-widest text-gold font-bold" dir="ltr" style="text-align:right">${b.tag}</span>
+      <h3 class="text-2xl font-extrabold text-espresso mt-1">${b.ar}</h3>
+      <p class="font-serif italic text-caramel text-sm" dir="ltr" style="text-align:right">${b.en}</p>
+      <p class="mt-3 text-sm text-cocoa/80 leading-7 flex-1">${b.desc}</p>
+      <div class="mt-5 flex items-center justify-between">
+        <span class="font-num font-bold text-xl text-espresso" dir="ltr">${money(b.price)}</span>
+        <button data-add="${b.id}" class="bg-caramel text-cream px-6 py-3 rounded-full text-sm font-bold hover:bg-espresso transition">أضف إلى السلة +</button>
+      </div>
+    </div>
+  </article>`).join('');
+
+document.addEventListener('click', e => {
+  const add = e.target.closest('[data-add]');
+  if (add) addToCart(add.dataset.add);
+});
+
+/* ===== السلة ===== */
+function addToCart(id) {
+  const item = cart.find(i => i.id === id);
+  item ? item.qty++ : cart.push({ id, qty: 1 });
+  renderCart();
+  toast('تمت الإضافة إلى السلة');
+  const c = $('count'); c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop');
+}
+
+function totals() {
+  const sub = cart.reduce((s, i) => s + i.qty * ALL.find(p => p.id === i.id).price, 0);
+  const ship = sub === 0 || sub >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
+  return { sub, ship, total: sub + ship };
+}
+
+function renderCart() {
+  const n = cart.reduce((s, i) => s + i.qty, 0);
+  const { sub, ship, total } = totals();
+  $('count').textContent = n;
+  $('subtotal').textContent = money(sub);
+  $('shipping').textContent = sub === 0 ? '—' : (ship ? money(ship) : 'مجاني');
+  $('total').textContent = money(total);
+  $('submitBtn').disabled = n === 0;
+
+  if (n === 0) {
+    $('cartItems').innerHTML = `<div class="text-center py-20 text-cocoa/70"><p class="mb-5">سلتك فارغة. اختر نكهتك المفضلة لتبدأ.</p><button data-goto="#menu" class="bg-espresso text-cream px-7 py-3 rounded-full font-bold hover:bg-caramel transition">تصفح القائمة</button></div>`;
+  } else {
+    const hint = sub < FREE_SHIPPING_FROM ? `<p class="text-xs text-caramel py-3">أضف <span class="font-num font-bold" dir="ltr">${money(FREE_SHIPPING_FROM - sub)}</span> للحصول على توصيل مجاني</p>` : `<p class="text-xs text-caramel py-3">أنت تحصل على توصيل مجاني</p>`;
+    $('cartItems').innerHTML = hint + cart.map(i => {
+      const p = ALL.find(x => x.id === i.id);
+      return `<div class="grid grid-cols-[64px_1fr_auto] gap-4 items-center py-4 border-b border-sand/50">
+        <div class="w-16 h-16 rounded-xl overflow-hidden scrim">${imgTag(p, 'w-full h-full object-cover')}</div>
+        <div>
+          <h4 class="font-bold text-espresso text-sm leading-6">${p.ar}</h4>
+          <span class="font-num text-xs text-cocoa/70" dir="ltr">${money(p.price)}</span>
+          <div class="mt-2 inline-flex items-center gap-3 bg-linen rounded-full px-1 py-0.5 font-num">
+            <button data-act="inc" data-id="${p.id}" aria-label="زيادة" class="w-7 h-7 rounded-full bg-cream border border-sand hover:bg-espresso hover:text-cream transition">+</button>
+            <span class="w-4 text-center text-sm font-semibold">${i.qty}</span>
+            <button data-act="dec" data-id="${p.id}" aria-label="إنقاص" class="w-7 h-7 rounded-full bg-cream border border-sand hover:bg-espresso hover:text-cream transition">−</button>
+          </div>
+        </div>
+        <div class="text-left">
+          <b class="font-num text-sm block" dir="ltr">${money(p.price * i.qty)}</b>
+          <button data-act="rm" data-id="${p.id}" class="text-xs text-caramel underline mt-1">حذف</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  persist();
+}
+
+$('cartItems').addEventListener('click', e => {
+  const go = e.target.closest('[data-goto]');
+  if (go) { closeDrawer(); location.hash = go.dataset.goto; return; }
+  const b = e.target.closest('[data-act]');
+  if (!b) return;
+  const item = cart.find(i => i.id === b.dataset.id);
+  if (!item) return;
+  if (b.dataset.act === 'inc') item.qty++;
+  if (b.dataset.act === 'dec') item.qty--;
+  if (b.dataset.act === 'rm') item.qty = 0;
+  cart = cart.filter(i => i.qty > 0);
+  renderCart();
+});
+
+/* ===== إتمام الطلب ===== */
+const hx = v => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+let sending = false;
+
+function setSending(on) {
+  sending = on;
+  $('submitBtn').disabled = on || cart.length === 0;
+  $('spin').classList.toggle('hidden', !on);
+  $('submitLabel').textContent = on ? 'جارٍ إرسال الطلب...' : 'تأكيد الطلب';
+}
+
+$('orderForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (sending) return;
+  const name = $('fName').value.trim();
+  const phone = $('fPhone').value.trim();
+  const address = $('fAddress').value.trim();
+  const notes = $('fNotes').value.trim();
+  const err = $('formError');
+  const digits = phone.replace(/\D/g, '');
+  $('waFallback').classList.add('hidden');
+  let msg = '';
+  if (cart.length === 0) { msg = 'سلتك فارغة حالياً، أضف كوكيزك المفضل أولاً 🍪'; toast(msg); }
+  else if (name.length < 3) msg = 'من فضلك اكتب اسمك الكامل.';
+  else if (digits.length < 8) msg = 'من فضلك اكتب رقم هاتف صحيحاً.';
+  else if (address.length < 3) msg = 'من فضلك اكتب العنوان أو الولاية.';
+  if (msg) { err.textContent = msg; err.classList.remove('hidden'); return; }
+  err.classList.add('hidden');
+
+  const { sub, ship, total } = totals();
+  const orderNo = 'CC-' + Math.floor(10000 + Math.random() * 89999);
+  const itemLines = cart.map(i => {
+    const p = ALL.find(x => x.id === i.id);
+    return `▪️ ${hx(p.ar)} × ${i.qty} = ${hx(money(p.price * i.qty))}`;
+  });
+
+  const text = [
+    '🍪 <b>طلب جديد من متجر الكوكيز!</b>',
+    `🧾 <b>رقم الطلب:</b> ${orderNo}`,
+    '',
+    `👤 <b>اسم العميل:</b> ${hx(name)}`,
+    `📞 <b>رقم الهاتف:</b> ${hx(phone)}`,
+    `📍 <b>العنوان:</b> ${hx(address)}`,
+    ...(notes ? [`📝 <b>ملاحظات:</b> ${hx(notes)}`] : []),
+    '',
+    '🛒 <b>المنتجات والكميات:</b>',
+    ...itemLines,
+    '',
+    `🚚 <b>التوصيل:</b> ${ship ? hx(money(ship)) : 'مجاني'}`,
+    `💰 <b>المجموع الكلي:</b> ${hx(money(total))}`
+  ].join('\n');
+
+  setSending(true);
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      body: new URLSearchParams({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' })
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.description || 'Telegram error');
+
+    $('successMsg').textContent = `شكراً ${name}، وصل طلبك إلى المتجر بنجاح. سنتواصل معك على ${phone} لتأكيد التوصيل. إجمالي الطلب ${money(total)}.`;
+    $('orderNo').textContent = 'Order #' + orderNo;
+    cart = []; renderCart();
+    $('orderForm').reset();
+    $('cartView').classList.add('hidden');
+    $('successView').classList.remove('hidden');
+    $('successView').classList.add('flex');
+    $('drawerTitle').textContent = 'تأكيد الطلب';
+  } catch (error) {
+    console.error('Telegram send failed:', error);
+    const plain = text.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    $('waFallback').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(plain)}`;
+    $('waFallback').classList.remove('hidden');
+    err.textContent = 'تعذّر إرسال الطلب الآن. تأكد من اتصالك بالإنترنت وحاول مرة أخرى.';
+    err.classList.remove('hidden');
+  } finally {
+    setSending(false);
+  }
+});
+
+$('doneBtn').onclick = () => { closeDrawer(); setTimeout(resetView, 400); };
+function resetView() {
+  $('successView').classList.add('hidden');
+  $('successView').classList.remove('flex');
+  $('cartView').classList.remove('hidden');
+  $('drawerTitle').textContent = 'سلة التسوق';
+}
+
+/* ===== الدرج الجانبي ===== */
+function openDrawer() {
+  $('drawer').classList.remove('-translate-x-full');
+  $('overlay').classList.remove('opacity-0', 'pointer-events-none');
+  $('drawer').setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  $('closeBtn').focus();
+}
+function closeDrawer() {
+  $('drawer').classList.add('-translate-x-full');
+  $('overlay').classList.add('opacity-0', 'pointer-events-none');
+  $('drawer').setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+$('cartBtn').onclick = openDrawer;
+$('closeBtn').onclick = closeDrawer;
+$('overlay').onclick = closeDrawer;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+/* ===== القائمة على الجوال ===== */
+$('menuBtn').onclick = () => $('mobileNav').classList.toggle('hidden');
+$('mobileNav').addEventListener('click', e => { if (e.target.tagName === 'A') $('mobileNav').classList.add('hidden'); });
+
+/* ===== رسالة قصيرة ===== */
+let timer;
+function toast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.remove('translate-y-24', 'opacity-0');
+  clearTimeout(timer);
+  timer = setTimeout(() => t.classList.add('translate-y-24', 'opacity-0'), 2200);
+}
+
+renderCart();
+</script>
+</body>
+</html>
